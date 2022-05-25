@@ -1,0 +1,39 @@
+version: '3.6'
+services:
+  postgres:
+    image: postgres:10.5
+    ports:
+      - 5433:5432
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_USER: sample
+      POSTGRES_PASSWORD: sample
+      POSTGRES_DB: sample
+    networks:
+      - main
+
+  github_action:
+    image: api
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        ENVIRONMENT: local
+    command: bin/dj-run.sh
+    volumes:
+      - .:/app
+    depends_on:
+      - postgres
+    ports:
+      - 8000:8000
+    env_file: .env
+    networks:
+      - main
+
+networks:
+  main:
+
+volumes:
+  pg_data:
+    driver: local
