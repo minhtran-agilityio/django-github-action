@@ -3,14 +3,13 @@ from django.test import TestCase
 from pages.models import Page
 
 
-class PagesTests(TestCase):
+class PagesTestCases(TestCase):
+    """
+    Page test cases
+    """
     def test_page_is_created_successfully(self):
         """
-
-        :return:
+        Test page is create successfully
         """
-        page = Page(
-            name='Home',
-            slug='home'
-        )
+        page = Page(name="Home", slug="home")
         page.save()
