@@ -81,19 +81,33 @@ TEMPLATES = [
 WSGI_APPLICATION = 'app.wsgi.application'
 
 
+# Environment
+ENVIRONMENT = os.environ.get('ENVIRONMENT')
+
+
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASES = {
-    "default": {
-        "ENGINE": os.getenv("DATABASE_ENGINE", "django.db.backends.postgresql"),
-        "NAME": os.getenv("DATABASE_NAME", "sample"),
-        "USER": os.getenv("DATABASE_USER", "sample"),
-        "PASSWORD": os.getenv("DATABASE_PASSWORD", "sample"),
-        "HOST": os.getenv("DATABASE_HOST", "postgres"),
-        "PORT": os.getenv("DATABASE_PORT", "5432"),
+
+
+if ENVIRONMENT == 'test':
+    DATABASES = {
+        "default": {
+            "ENGINE": "django.db.backends.sqlite3",
+            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+        }
     }
-}
+else:
+    DATABASES = {
+        "default": {
+            "ENGINE": os.getenv("DATABASE_ENGINE", "django.db.backends.postgresql"),
+            "NAME": os.getenv("DATABASE_NAME", "sample"),
+            "USER": os.getenv("DATABASE_USER", "sample"),
+            "PASSWORD": os.getenv("DATABASE_PASSWORD", "sample"),
+            "HOST": os.getenv("DATABASE_HOST", "postgres"),
+            "PORT": os.getenv("DATABASE_PORT", "5432"),
+        }
+    }
 
 
 # Password validation
@@ -141,8 +155,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-# Environment
-ENVIRONMENT = os.environ.get('ENVIRONMENT')
 
 # Swagger settings.
 SWAGGER_SETTINGS = {
