@@ -13,7 +13,7 @@ services:
     networks:
       - main
 
-  github_action:
+  api:
     image: api
     build:
       dockerfile: Dockerfile
