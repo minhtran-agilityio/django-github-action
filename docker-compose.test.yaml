@@ -1,0 +1,15 @@
+version: '3.6'
+services:
+  test:
+    image: api:test
+    build:
+      dockerfile: Dockerfile
+      context: .
+      args:
+        ENVIRONMENT: test
+    environment:
+      - "TEST_APP=${TEST_APP}"
+    command: bin/dj-test.sh
+    volumes:
+      - .:/app
+    env_file: .env.test
