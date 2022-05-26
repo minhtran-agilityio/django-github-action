@@ -5,11 +5,10 @@ services:
     build:
       dockerfile: Dockerfile
       context: .
-      args:
-        ENVIRONMENT: test
-    environment:
-      - "TEST_APP=${TEST_APP}"
     command: bin/dj-test.sh
     volumes:
       - .:/app
-    env_file: .env.test
+    environment:
+      MIN_COVERAGE: 90
+      ENVIRONMENT: test
+      SECRET_KEY: x3jndnk=x3jndnk=d58tm5%-a6*usa!l)8zo*9+y@%jm@h(v%-x@!o2n@4
