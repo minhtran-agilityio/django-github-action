@@ -19,16 +19,14 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: 3.9
+    # - name: Run Tests
+    #   id: run-unittest
+    #   run: |
+    #     docker-compose -f docker-compose.test.yaml up --build
     - name: Run Tests
-      id: run-unittest
-      run: |
-        docker-compose -f docker-compose.test.yaml up --build
+      uses: actions/django-github-action@v1
+      run: docker-compose -f docker-compose.test.yaml up --build
     - name: After testing
-      if: steps.run-unittest.outcome.exit_code == 1
+      if: steps.run-unittest.outcome.exit_code == 0
       run: |
         echo 'Faield test'
-    # - name: Run Tests
-    #   uses: actions/django-github-action@v1
-    #   with:
-    #     minimum-coverage: '90'
-

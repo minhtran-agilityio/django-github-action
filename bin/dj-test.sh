@@ -8,7 +8,7 @@ MIN_COVERAGE=200
 #     coverage erase && coverage run --source='.' src/manage.py test "src/${TEST_APP}/tests/" -v 2 && coverage html
 # fi
 
-coverage erase && coverage run --source='.' src/manage.py test "src/${TEST_APP}/tests/" -v 2 && coverage html
+coverage run --source='.' src/manage.py test src -v 2
 
 coverage report -m
 
