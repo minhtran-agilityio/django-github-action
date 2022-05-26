@@ -24,7 +24,7 @@ jobs:
     #   run: |
     #     docker-compose -f docker-compose.test.yaml up --build
     - name: Run Tests
-      uses: actions/django-github-action@v1
+      uses: actions/django-github-action
       # run: docker-compose -f docker-compose.test.yaml up --build
     - name: After testing
       if: steps.run-unittest.outcome.exit_code == 0
