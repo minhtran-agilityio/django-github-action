@@ -7,3 +7,7 @@ else
 fi
 
 coverage report -m
+
+COVERAGE_RESULT=`coverage report | grep TOTAL | awk 'N=1 {print $NF}' | sed 's/%//g'`
+
+echo ::set-output name=coverage_result::$COVERAGE_RESULT
