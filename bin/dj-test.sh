@@ -4,6 +4,8 @@ if [ -z "$MIN_COVERAGE" ]; then
     MIN_COVERAGE=80
 fi
 
+echo "---> TARGET COVERAGE: ${MIN_COVERAGE}%"
+
 coverage run --source='.' src/manage.py test src -v 2
 coverage report -m
 
