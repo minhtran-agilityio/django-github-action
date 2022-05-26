@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-MIN_COVERAGE=$1
+MIN_COVERAGE=200
 
 # if [ -z "$TEST_APP" ]; then
 #     coverage run --source='.' src/manage.py test src -v 2 && coverage html
@@ -26,4 +26,4 @@ else
 fi
 
 echo "#################################################"
-echo "Completed ${GITHUB_WORKFLOW}:${GITHUB_ACTION}"
+echo "Completed!"

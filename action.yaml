@@ -1,0 +1,20 @@
+name: 'django-coverage-action'
+description: 'Github Action to run tests and get coverage'
+
+inputs:
+  minimum-coverage:
+    description: 'Minimum allowed code coverage'
+    required: false
+    default: '10'
+
+branding:
+  icon: box
+  color: gray-dark
+
+# runs-on: ubuntu-latest
+
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.minimum-coverage }}
