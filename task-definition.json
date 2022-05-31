@@ -14,7 +14,28 @@
           "containerPort": "8080",
           "protocol": "tcp"
         }
-      ]
+      ],
+      "command": [
+        "bin/dj-run.sh"
+      ],
+      "environment": [
+        {
+          "name": "ENVIRONMENT",
+          "value": "dev"
+        },
+        {
+          "name": "DATABASE_MIGRATE",
+          "value": true
+        }
+      ],
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group" : "/ecs/fargate-task-definition",
+          "awslogs-region": "ap-southeast-1",
+          "awslogs-stream-prefix": "ecs"
+        }
+      }
     }
   ],
   "volumes": [],
