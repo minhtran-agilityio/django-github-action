@@ -25,7 +25,7 @@
         },
         {
           "name": "DATABASE_MIGRATE",
-          "value": true
+          "value": "true"
         }
       ],
       "logConfiguration": {
