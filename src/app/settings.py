@@ -45,7 +45,6 @@ INSTALLED_APPS = [
 ]
 
 INSTALLED_APPS += [
-    'pages',
     'products',
 ]
 
@@ -90,24 +89,35 @@ ENVIRONMENT = os.environ.get('ENVIRONMENT')
 
 
 
-if ENVIRONMENT == 'test':
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
-        }
+# if ENVIRONMENT == 'test':
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": "django.db.backends.sqlite3",
+#             "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+#         }
+#     }
+# else:
+#     DATABASES = {
+#         "default": {
+#             "ENGINE": os.getenv("DATABASE_ENGINE", "django.db.backends.postgresql"),
+#             "NAME": os.getenv("DATABASE_NAME", "sample"),
+#             "USER": os.getenv("DATABASE_USER", "sample"),
+#             "PASSWORD": os.getenv("DATABASE_PASSWORD", "sample"),
+#             "HOST": os.getenv("DATABASE_HOST", "postgres"),
+#             "PORT": os.getenv("DATABASE_PORT", "5432"),
+#         }
+#     }
+
+DATABASES = {
+    "default": {
+        "ENGINE": os.getenv("DATABASE_ENGINE", "django.db.backends.postgresql"),
+        "NAME": os.getenv("DATABASE_NAME", "sample"),
+        "USER": os.getenv("DATABASE_USER", "sample"),
+        "PASSWORD": os.getenv("DATABASE_PASSWORD", "sample"),
+        "HOST": os.getenv("DATABASE_HOST", "postgres"),
+        "PORT": os.getenv("DATABASE_PORT", "5432"),
     }
-else:
-    DATABASES = {
-        "default": {
-            "ENGINE": os.getenv("DATABASE_ENGINE", "django.db.backends.postgresql"),
-            "NAME": os.getenv("DATABASE_NAME", "sample"),
-            "USER": os.getenv("DATABASE_USER", "sample"),
-            "PASSWORD": os.getenv("DATABASE_PASSWORD", "sample"),
-            "HOST": os.getenv("DATABASE_HOST", "postgres"),
-            "PORT": os.getenv("DATABASE_PORT", "5432"),
-        }
-    }
+}
 
 
 # Password validation
