@@ -63,16 +63,7 @@ jobs:
         IMAGE_TAG: ${{ github.sha }}
         ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
         SECRET_KEY: ${{ secrets.SECRET_KEY }}
-        # DATABASE_ENGINE: ${{ secrets.DATABASE_ENGINE }}
-        # DATABASE_HOST: ${{ secrets.DATABASE_HOST }}
-        # DATABASE_PORT: ${{ secrets.DATABASE_PORT }}
-        # DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
-        # DATABASE_USER: ${{ secrets.DATABASE_USER }}
-        # DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
-        # COLLECT_STATICS: ${{ secrets.COLLECT_STATICS }}
         DATABASE_MIGRATE: ${{ secrets.DATABASE_MIGRATE }}
-        # RESET_DATABASE: ${{ secrets.RESET_DATABASE }}
-        # GENERATE_SAMPLE_DATA: ${{ secrets.GENERATE_SAMPLE_DATA }}
       run: |
         # Build a docker container and
         # push it to ECR so that it can
