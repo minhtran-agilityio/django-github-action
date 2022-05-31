@@ -34,10 +34,6 @@ jobs:
       id: run-unittest
       run: |
         docker-compose -f docker-compose.test.yaml up --build
-    - name: After testing
-      if: steps.run-unittest.outcome.exit_code == 1
-      run: |
-        echo 'Faield test'
 
   deploy:
     name: Deploy
